@@ -1,1 +1,36 @@
-<p>post-form works!</p>
+
+<h3 class="font-weight-bold text-center">
+    {{isInEditMode ? 'UPDATE POST CARD' : 'ADD POST CARD'}}
+</h3>
+
+<form #postForm="ngForm" (ngSubmit)="onPostAdd()">
+    <div class="form-group">
+        <label for="title">POST TITLE</label>
+        <input type="text" class="form-control" ngModel name="title" #title="ngModel" required>
+
+        <strong class="text-danger" *ngIf="title.touched && title.hasError('required')">
+          Field Is Required !!!
+        </strong>
+    </div>
+
+    <div class="form-group">
+        <label for="body">POST CONTENT</label>
+        <textarea rows="2"  type="text" class="form-control" ngModel name="body" #body="ngModel" required></textarea>
+
+         <strong class="text-danger" *ngIf="body.touched && body.hasError('required')">
+          Field Is Required !!!
+        </strong>
+    </div>
+
+        <button 
+        *ngIf="!isInEditMode"
+        mat-raised-button color="accent"
+        class=" btn-block">ADD POST</button>
+
+         <button 
+         *ngIf="isInEditMode"
+         (click)="onUpdate()"
+        mat-raised-button color="accent" type="button"
+        class=" btn-block">UPDATE POST</button>
+ 
+</form>

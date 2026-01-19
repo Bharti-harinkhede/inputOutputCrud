@@ -1,1 +1,24 @@
-<p>post-list works!</p>
+<div class="row">
+    <div class="col-md-4 mb-3" *ngFor="let post of postInfo">
+        <div class="card  h-100">
+
+            <div class="card-header">
+                <h2>{{post.title}}</h2>
+            </div>
+            <div class="card-body">
+                <p>{{post.body}}</p>
+            </div>
+            <div class="card-header d-flex justify-content-between">
+                <button 
+                (click)="onEdit(post)"
+                class="btn btn-primary">EDIT</button>
+
+
+                <button class="btn btn-danger"
+                (click)="onRemove(post.id)"
+                >REMOVE</button>
+            </div>
+
+        </div>
+    </div>
+</div>

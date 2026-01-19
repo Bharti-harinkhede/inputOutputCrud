@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IPost } from '../../models/post';
+import { SnackBarService } from '../../services/snack-bar.service';
 
 @Component({
   selector: 'app-post-dashboard',
@@ -7,7 +8,8 @@ import { IPost } from '../../models/post';
   styleUrls: ['./post-dashboard.component.scss']
 })
 export class PostDashboardComponent implements OnInit {
- postArr: Array<IPost> =
+  editPost !: IPost
+  postArr: Array<IPost> =
     [
       {
         "userId": 1,
@@ -45,10 +47,33 @@ export class PostDashboardComponent implements OnInit {
         "title": "dolorem eum magni eos aperiam quia",
         "body": "ut aspernatur corporis harum nihil quis provident sequi\nmollitia nobis aliquid molestiae\nperspiciatis et ea nemo ab reprehenderit accusantium quas\nvoluptate dolores velit et doloremque molestiae"
       }]
-      
-  constructor() { }
 
-  ngOnInit(): void {
+  constructor(
+    private _snackBar: SnackBarService
+  ) { }
+
+  ngOnInit(): void {}
+
+  getNewPost(post: IPost) {
+    this.postArr.unshift(post)
+    this._snackBar.openSnackbar(`The Post Is Created Successfully !!!`)
+  }
+
+
+  getRemoveId(id:string){
+    let getIndex = this.postArr.findIndex(p => p.id === id)
+    this.postArr.splice(getIndex, 1)
+    this._snackBar.openSnackbar((`Post Removed Successfully !!!`))
+  }
+
+  getEditPost(post : IPost){
+    this.editPost = post
+  }
+
+  getUpdatePost(post:IPost){
+    let getIndex = this.postArr.findIndex(p => p.id === post.id)
+    this.postArr[getIndex]=post
+    this._snackBar.openSnackbar(`The Post Updated Successfully !!!`)
   }
 
 }

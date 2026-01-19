@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-6">
+    <div class="col-md-6">
         <app-student-form
         [editStdObj] = 'editStd'
         (emitNewStd)="getNewStd($event)"
@@ -7,7 +7,7 @@
         ></app-student-form>
     </div>
 
-    <div class="col-6">
+    <div class="col-md-6">
         <app-student-table
         (emitOnRemove)="getRemoveStd($event)"
         (emitEditStd)="getEditStd($event)"
