@@ -1,0 +1,13 @@
+<p>{{getMsg || 'Are You Sure ? You Want To Remove this ?'}} </p>
+
+<div class="d-flex justify-content-between">
+<button 
+(click)="onClose(true)"
+mat-raised-button color="primary"
+>YES</button>
+<button
+mat-raised-button color="warn"
+(click)="onClose(false)"
+>NO</button>
+</div>
+

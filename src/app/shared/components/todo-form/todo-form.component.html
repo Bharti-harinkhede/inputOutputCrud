@@ -1,0 +1,29 @@
+<!-- <h3 class="font-weigth-bold text-center">
+    {{isInEditMode ? 'UPDATE TODO' : 'ADD TODO'}}
+</h3> -->
+
+
+<div class="card">
+    <div class="card-body">
+        <form #todoForm="ngForm" (ngSubmit)="onTodoAdd()">
+
+            <div class="form-group">
+                <label for="todoItem">TODO ITEM</label>
+                <input type="text" class="form-control" ngModel name="todoItem" #todoItem="ngModel" required>
+
+                <strong class="text-danger" *ngIf="todoItem.touched && todoItem.hasError('required')">
+                    The Todo Item Field Is Required !!!
+                </strong>
+            </div>
+
+            <button mat-raised-button color="accent" class=" btn-block"
+            *ngIf="!isInEditMode"
+            >ADD TODO</button>
+
+            <button mat-raised-button color="accent" class=" btn-block" type="button"
+            *ngIf="isInEditMode"
+            (click)="onUpdate()"
+            >UPDATE TODO</button>
+        </form>
+    </div>
+</div>

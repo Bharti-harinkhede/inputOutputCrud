@@ -1,0 +1,37 @@
+<table class=" table table-bordered" *ngIf="stdInfo.length > 0; else nostd">
+    <thead>
+        <tr>
+            <th>Sr No</th>
+            <th>FULL NAME</th>
+            <th>EMAIL</th>
+            <th>CONTACT</th>
+            <th>EDIT</th>
+            <th>REMOVE</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let std of stdInfo; let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{std.fname}} {{std.lname}}</td>
+            <td>{{std.email}}</td>
+            <td>{{std.contact}}</td>
+            <td>
+                <button mat-mini-fab color="primary" (click)="onEdit(std)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </td>
+            <td>
+                <button mat-mini-fab color="warn" (click)="onRemove(std.stdId)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+
+        </tr>
+    </tbody>
+
+</table>
+
+<ng-template #nostd>
+    <p class="text-danger">NO STUDENTS AVAILABLE !!!</p>
+</ng-template>

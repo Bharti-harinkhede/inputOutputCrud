@@ -1,0 +1,58 @@
+<!-- <h3 class="font-weigth-bold text-center">
+    {{isInEditMode ? 'UPDATE STUDENT' : 'ADD STUDENT'}}
+</h3> -->
+
+
+<div class="card">
+    <div class="card-body">
+        <form #stdForm="ngForm" (ngSubmit)="onStdAdd()" >
+
+           <div div class="form-group">
+                <label for="fname">FIRST NAME </label>
+                <input type="text" ngModel #fname="ngModel" name="fname" required class="form-control">
+
+                <strong class="text-danger" *ngIf="fname.touched && fname.hasError('required')">
+                FIRST NAME Is Required !!!
+                </strong>
+            </div>
+
+            <div div class="form-group">
+                <label for="lname">LAST NAME </label>
+                <input type="text" ngModel #lname="ngModel" name="lname" required class="form-control">
+
+                <strong class="text-danger" *ngIf="lname.touched && lname.hasError('required')">
+                Last Name Is Required !!!
+                </strong>
+            </div>
+
+
+             <div div class="form-group">
+                <label for="email">EMAIL </label>
+                <input type="text" ngModel #email="ngModel" name="email" required class="form-control">
+
+                <strong class="text-danger" *ngIf="email.touched && email.hasError('required')">
+                Email Is Required !!!
+                </strong>
+            </div>
+
+            
+             <div div class="form-group">
+                <label for="contact">CONTACT </label>
+                <input type="text" ngModel #contact="ngModel" name="contact" required class="form-control">
+
+                <strong class="text-danger" *ngIf="contact.touched && contact.hasError('required')">
+                Contact Is Required !!!
+                </strong>
+            </div>
+
+            <button 
+            *ngIf="!isInEditMode"
+            mat-raised-button color="accent" class="btn-block">ADD STUDENT</button>
+
+              <button
+              *ngIf="isInEditMode"
+              (click)="onUpdate()"
+              mat-raised-button color="accent" class="btn-block">UPDATE STUDENT</button>
+        </form>
+    </div>
+</div>

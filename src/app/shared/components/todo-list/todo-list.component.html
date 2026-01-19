@@ -1,0 +1,31 @@
+
+<ng-container *ngIf="todoInfo.length > 0; else notodo">
+<ul class="list-group">
+    <li *ngFor=" let todo of todoInfo; trackBy : trackById" class="list-group-item 
+    d-flex justify-content-between align-items-center">
+        <strong>
+            {{todo.todoItem}}
+        </strong>
+
+        <div>
+            <button mat-mini-fab color="primary" class="mr-2"
+            (click)="onEdit(todo)"
+            >
+                <mat-icon>edit</mat-icon>
+            </button>
+
+            <button mat-mini-fab color="warn"
+            (click)="onRemove(todo)"
+            >
+                 <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+    </li>
+</ul>
+
+</ng-container>
+
+
+<ng-template #notodo>
+  NO TODO ITEMS AVAILABLE HERE !!!
+</ng-template>

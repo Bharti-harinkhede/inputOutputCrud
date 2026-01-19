@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-6">
+        <app-student-form
+        [editStdObj] = 'editStd'
+        (emitNewStd)="getNewStd($event)"
+        (emitUpdateStd)="getUpdateStd($event)"
+        ></app-student-form>
+    </div>
+
+    <div class="col-6">
+        <app-student-table
+        (emitOnRemove)="getRemoveStd($event)"
+        (emitEditStd)="getEditStd($event)"
+        [stdInfo]="stdArr"
+        ></app-student-table>
+    </div>
+</div>
